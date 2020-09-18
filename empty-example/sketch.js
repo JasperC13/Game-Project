@@ -5,8 +5,8 @@ let anotherFace;
 
 function setup() {
   createCanvas(700, 600);
-  f = new Bruh(30,70,"red");
-  anotherFace = new Bruh(80,120,"orange");
+  f = new Bruh(30,450,"red");
+  anotherFace = new Bruh(80,550,"orange");
 }
 
 function draw(){
