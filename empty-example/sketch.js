@@ -1,20 +1,48 @@
+let x = 50;
+let y = 50;
+let f;
+let anotherFace;
+
 function setup() {
   createCanvas(700, 600);
+  f = new Bruh(30,70,"red");
+  anotherFace = new Bruh(80,120,"orange");
 }
 
 function draw(){
-	background("pink");
-  fill("black")
-  ellipse(100,100,40,50);
-  fill("blue")
-  rect(200,200,100,150)
-  rect(400,300,100,100);
-  fill("green");
-  rect(375,400,150,150);
-  rect(325,410,50,100);
-  rect(500,410,50,100);
-  fill("yellow");
-  ellipse(400,340,15,15);
-  ellipse(450,340,15,15);
-  rect(300,250,80,25);
+  background("blue");
+    f.drawFace();
+    f.moveFace();
+    anotherFace.drawFace();
+    anotherFace.moveFace();
+}
+
+class Bruh {
+
+  constructor(x,y,color){
+    this.x=x;
+    this.y=y;
+    this.color=color
+  }
+
+  drawFace(){
+    stroke(4);
+    fill(this.color);
+    face1(this.x,this.y,10,10);
+  }
+
+  moveFace(){
+    this.x = this.x+5
+    this.y = this.y-2
+  }
+
+}
+function face(x,y){
+  ellipse(x,y,40,40);
+  ellipse(x-10,y-7,10,10);
+  ellipse(x+10,y-7,10,10);
+}
+
+function face1(x,y){
+  face(x+2.5,y+2.5);
 }
