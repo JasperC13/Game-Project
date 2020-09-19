@@ -22,7 +22,7 @@ class Bruh {
   constructor(x,y,color){
     this.x=x;
     this.y=y;
-    this.color=color
+    this.color=color;
   }
 
   drawFace(){
