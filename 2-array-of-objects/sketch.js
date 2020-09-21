@@ -1,45 +1,43 @@
-let balls = []
+let balls = [];
 
-function setup(){
-  createCanvas(400,400);
-  background("orange");
+function setup() {
+  createCanvas(500, 500);
 }
 
 function draw(){
-  for (let i = 0; i < balls.length; i++){
-    balls[i].drawball();
-    bakks[i].moveball();
-  }
+	background("pink");
+
+  for (let i = 0; i < balls.length; i++) {
+      balls[i].drawBall();
+      balls[i].moveBall();
+    }
 }
 
-class Ball{
-
-  constructor(x,y){
-    this.x = x;
-    this.y = y;
-  }
-
-  drawBall(){
-    stroke(4);
-    ball(this.x,this.y,20,20);
-  }
-
-  moveBall(){
-    this.x=this.x+2
-    this.y=this.y+2
-  }
-}
-
-function ball(){
-  ellipse(x,y,20,20);
-}
-
-function ball1(){
-  ball(x+2.5,y+2.5)
-}
-
-function keypressed(){
-  let b = new Ball(100,100);
+function keyPressed(){ //every time you push a key, make a new ball from the ball class and add it to the balls array
+  let  b = new Ball(random(0,800), random(0,400));
   balls.push(b);
-  print(balls);
+  console.log(balls);
+  push();
+}
+
+//ball class from which to create new balls with similar properties.
+class Ball {
+
+	constructor(x,y){ //every ball needs an x value and a y value
+		    this.x = x;
+    		this.y = y;
+	}
+
+	drawBall(){  // draw a ball on the screen at x,y
+    		stroke(0);
+    		fill(random(0,270), random(0,270), random(0,270));
+		    ellipse(this.x,this.y,random(100),random(100));
+	}
+
+	moveBall(){ //update the location of the ball, so it moves across the screen
+		this.x = this.x+random(-2,2);
+		this.y = this.y+random(-0.5,0.5);
+	}
+
+
 }
