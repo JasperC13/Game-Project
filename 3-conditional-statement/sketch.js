@@ -3,8 +3,15 @@ let balls = [];
 
 //create a variable to hold your avatar
 let me;
-
 let lives;
+let points;
+let mySound;
+
+function preload(){
+  soundFormats('wav');
+  bonk = loadSound('bonk.wav');
+  plip = loadSound('plip.wav');
+}
 
 function setup() {
   createCanvas(500, 400);
@@ -13,6 +20,7 @@ function setup() {
   me = new Avatar(width/2, 300, 3, 3);
 
   lives=10;
+  points=0
 
 }
 
@@ -20,9 +28,10 @@ function draw(){
 	background("pink");
 
   fill("white");
-  rect(0,0,75,20);
+  rect(0,0,75,35);
   stroke(4);
   text("Lives: " + lives,5,15);
+  text("Points: " + points,5,30);
 
   me.drawMe();
   me.moveMe();
@@ -125,8 +134,19 @@ class Ball {
   	bounceBall(){
     		if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
       			this.yspeed = -this.yspeed;
-          lives = lives-1;
+            this.y=this.y-10;
+
+            bonk.setVolume(0.1);
+            bonk.play();
+
+            lives = lives-1;
     		}
+        if(this.y===400){
+            points = points+1;
+
+            plip.setVolume(0.1);
+            plip.play();
+        }
   	}
 
 }
