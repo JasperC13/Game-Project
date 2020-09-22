@@ -141,12 +141,11 @@ class Ball {
 
             lives = lives-1;
     		}
-        if(this.y===400){
+        if(this.y==400){
             points = points+1;
 
-            plip.setVolume(0.1);
+            plip.setVolume(0.3);
             plip.play();
         }
   	}
-
 }
