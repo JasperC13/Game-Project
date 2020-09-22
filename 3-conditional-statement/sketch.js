@@ -17,17 +17,18 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background("pink");
 
   fill("white");
   rect(0,0,75,20);
+  stroke(4);
   text("Lives: " + lives,5,15);
 
   me.drawMe();
   me.moveMe();
 
   if (frameCount % 25 == 0) {
-      let  b = new Ball(random(0,width), 0, 3);
+      let  b = new Ball(random(0,width), 0, random(-1,1), random(1,3));
       balls.push(b);
       console.log(balls); //print the balls array to the console
     }
@@ -51,7 +52,7 @@ class Avatar {
 	constructor(x,y,xspeed,yspeed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
     		this.y = y;
-        this.xspeed = xspeed
+        this.xspeed = xspeed;
         this.yspeed = yspeed;
 	}
 
@@ -97,10 +98,11 @@ class Avatar {
 class Ball {
 
 	//every ball needs an x value, a y value, and a speed
-	constructor(x,y,speed){
+	constructor(x,y,xspeed,yspeed){
 		this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.xspeed = xspeed;
+    this.yspeed = yspeed;
 	}
 
 	// draw a ball on the screen at x,y
@@ -109,21 +111,21 @@ class Ball {
       strokeWeight(1);
     	fill(232,24,21);
 		  ellipse(this.x,this.y,10,10);
-      line(this.x,this.y-5,this.x-3,this.y-7)
-      ellipse(this.x-3,this.y-10,5,3)
+      line(this.x,this.y-5,this.x-3,this.y-7);
+      ellipse(this.x-3,this.y-10,5,3);
 	}
 
 	//update the location of the ball, so it moves across the screen
 	moveBall(){
-		this.x = this.x;
-		this.y = this.y+ this.speed;
+		this.x = this.x + this.xspeed;
+		this.y = this.y + this.yspeed;
 	}
 
 	//if the ball hits the person, change the speed value to negative (send it in the opposite direction)
   	bounceBall(){
     		if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
-      			this.speed = -this.speed;
-          lives = lives-1
+      			this.yspeed = -this.yspeed;
+          lives = lives-1;
     		}
   	}
 
