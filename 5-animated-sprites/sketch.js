@@ -10,12 +10,12 @@ function preload() {
 //
 //   //create an animation from a sequence of numbered images
 //   //pass the first and the last file name and it will try to find the ones in between
-  ghost = loadAnimation('assets/000.png','assets/002.png');
-
+  ghost = loadAnimation('assets/Sprite Assets/ghost_standing0001.png', 'assets/Sprite Assets/ghost_standing0007.png');
+  penguin = loadAnimation('sprites/Penguin1.png', 'sprites/Penguin4.png');
 }
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(800, 800);
 }
 
 function draw() {
@@ -23,6 +23,7 @@ function draw() {
 
   //specify the animation instance and its x,y position
   //animation() will update the animation frame as well
-  animation(ghost, 300, 150);
+//  animation(ghost, 300, 150);
+  animation(penguin, 350, 400);
 
 }
